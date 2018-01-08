@@ -1,0 +1,22 @@
+{
+  "name": "hacky-backend",
+  "version": "1.0.0",
+  "description": "The ultimate data analytics application",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayneyu/hacky.git"
+  },
+  "author": "Hacky team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wayneyu/hacky/issues"
+  },
+  "homepage": "https://github.com/wayneyu/hacky#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
