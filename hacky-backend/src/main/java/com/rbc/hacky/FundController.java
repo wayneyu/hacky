@@ -23,6 +23,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/funds")
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 public class FundController {
 
     private final FundService fundService;
