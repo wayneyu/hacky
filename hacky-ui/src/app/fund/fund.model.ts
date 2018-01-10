@@ -1,4 +1,6 @@
 export class Fund {
-  id: number;
   name: string;
+  position: number;
+  subscribe: number;
+  symbol: string;
 }

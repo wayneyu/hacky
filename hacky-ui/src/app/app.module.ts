@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 
 import {AngularMaterialModule} from './angular-material.module';
-import {MatTabsModule} from '@angular/material/tabs';
+import {MatTabsModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
@@ -33,8 +33,10 @@ import { MessageService } from './common/message.service'
      HttpModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    MatTabsModule
-
+    MatTabsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [MessageService, FundService],
   bootstrap: [AppComponent]
