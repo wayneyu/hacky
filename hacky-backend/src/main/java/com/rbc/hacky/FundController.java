@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.AbstractMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/funds")
 public class FundController {
@@ -33,6 +37,11 @@ public class FundController {
                                           }) Pageable pageRequest) {
 
         Page<Fund> transactionList = fundService.findAll(pageRequest);
-        return new ResponseEntity<>((transactionList), HttpStatus.OK);
+        return new ResponseEntity<>(transactionList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/transferMap", method = RequestMethod.GET)
+    public HttpEntity<Map<String,List<AbstractMap.SimpleEntry<String,Integer>>>> getTransferMap() {
+        return new ResponseEntity<>(fundService.createFundTransferGraph(), HttpStatus.OK);
     }
 }

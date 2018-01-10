@@ -76,4 +76,22 @@ public class Fund extends ResourceSupport {
     public Integer getFundId() {
         return id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Fund fund = (Fund) o;
+
+        return id != null ? id.equals(fund.id) : fund.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        return result;
+    }
 }
