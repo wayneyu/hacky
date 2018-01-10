@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FundService } from '../fund-service/fund-service';
 
 @Component({
   selector: 'fund-list',
@@ -6,5 +7,12 @@ import { Component } from "@angular/core";
 })
 
 export class FundListComponent {
-  constructor() { }
+  private fundList: any;
+
+  constructor(private fundService: FundService) {}
+
+    ngOnInit() {
+      this.fundList = this.fundService.getFunds();
+
+    }
 }
