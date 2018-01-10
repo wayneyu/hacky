@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { FundListComponent } from './fund/fund-list/fund-list.component';
+import { CircleMapComponent } from './components/circle-map/circle-map.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch:'full'},
   { path: 'dashboard', component:DashboardComponent },
-  { path: 'fund-list', component:FundListComponent }
+  { path: 'fund-list', component:FundListComponent },
+  { path: 'fund-map', component:CircleMapComponent }
 ];
 
 @NgModule({

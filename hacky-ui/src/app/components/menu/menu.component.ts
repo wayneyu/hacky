@@ -15,7 +15,9 @@ export class MenuComponent {
   constructor() {
     this.menus = [
       {id: 1, label: 'Home', path: '/dashboard'},
-      {id: 2, label: 'Fund List', path: '/fund-list'}
+      {id: 2, label: 'Fund List', path: '/fund-list'},
+      {id: 3, label: 'Fund Map', path: '/fund-map'}
+
     ];
   }
 

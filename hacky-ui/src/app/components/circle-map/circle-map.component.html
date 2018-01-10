@@ -6,6 +6,10 @@
         [radius]="data.netAmount"
         [fillColor]="data.color"
 ></agm-circle>
+<agm-marker *ngFor="let data of fundCityList"
+        [latitude]="data.lat"
+        [longitude]="data.lon"
+        [label]="'CAD $' + data.netAmount.toFixed(2)"></agm-marker>
 
 
 </agm-map>
