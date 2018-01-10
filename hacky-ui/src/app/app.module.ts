@@ -19,6 +19,7 @@ import {MenuComponent} from "./components/menu/menu.component";
 
 import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
+import { FundCityService } from './fund/fund-city-service/fund-city-service';
 
 @NgModule({
   declarations: [
@@ -39,14 +40,14 @@ import { MessageService } from './common/message.service'
     AngularMaterialModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAAT7o3F1_8wWPVlA_O0nxpHgyTtPKHw6c'
-    })
+    }),
     AngularMaterialModule,
     MatTabsModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule
   ],
-  providers: [MessageService, FundService],
+  providers: [MessageService, FundService, FundCityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

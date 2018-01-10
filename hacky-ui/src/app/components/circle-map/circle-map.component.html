@@ -1,1 +1,10 @@
-<agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+<agm-map [latitude]="fundCityList[0].lat" [longitude]="fundCityList[0].long">
+
+<agm-circle *ngFor="let data of fundCityList"
+        [latitude]="data.lat"
+        [longitude]="data.lon"
+        [radius]="data.netAmount"
+></agm-circle>
+
+
+</agm-map>
