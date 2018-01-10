@@ -11,6 +11,6 @@ Endpoints:
    * Supports paging and sorting.
    * Exmaple: `/funds?page=0&size=3&sort=topPerformance&direction=DESC`
    
-- `/funds` - get all funds' transfer info
-   * This endpoint currently randoms the transfer amount 
+- `/funds/transferMap` - get all funds' transfer info
+   * This endpoint currently randoms the transfer amount, but caches the result
    * Exmaple: `funds/transferMap`
