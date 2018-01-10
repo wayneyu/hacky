@@ -1,5 +1,6 @@
 package com.rbc.hacky;
 
+import com.rbc.hacky.model.CityWIthFund;
 import com.rbc.hacky.model.Fund;
 import com.rbc.hacky.model.Transfer;
 import com.rbc.hacky.service.FundService;
@@ -43,5 +44,10 @@ public class FundController {
     @RequestMapping(value = "/transferMap", method = RequestMethod.GET)
     public HttpEntity<Map<String, List<Transfer>>> getTransferMap() {
         return new ResponseEntity<>(fundService.createFundTransferGraph(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fundCity", method = RequestMethod.GET)
+    public HttpEntity<List<CityWIthFund>> getFundCity() {
+        return new ResponseEntity<>(fundService.getCityFundMap(), HttpStatus.OK);
     }
 }
