@@ -1,5 +1,6 @@
 package com.rbc.hacky;
 
+import com.rbc.hacky.model.CityWIthFund;
 import com.rbc.hacky.model.Fund;
 import com.rbc.hacky.model.Transfer;
 import com.rbc.hacky.service.FundService;
@@ -31,17 +32,22 @@ public class FundController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public HttpEntity<Page<Fund>> getFund(@PageableDefault(size = 5)
+    public HttpEntity<List<Fund>> getFund(@PageableDefault(size = 5)
                                           @SortDefault.SortDefaults({
                                                   @SortDefault(sort = "id", direction = Sort.Direction.DESC)
                                           }) Pageable pageRequest) {
 
         Page<Fund> transactionList = fundService.findAll(pageRequest);
-        return new ResponseEntity<>(transactionList, HttpStatus.OK);
+        return new ResponseEntity<>(transactionList.getContent(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/transferMap", method = RequestMethod.GET)
     public HttpEntity<Map<String, List<Transfer>>> getTransferMap() {
         return new ResponseEntity<>(fundService.createFundTransferGraph(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fundCity", method = RequestMethod.GET)
+    public HttpEntity<List<CityWIthFund>> getFundCity() {
+        return new ResponseEntity<>(fundService.getCityFundMap(), HttpStatus.OK);
     }
 }

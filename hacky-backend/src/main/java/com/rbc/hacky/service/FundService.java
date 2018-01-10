@@ -2,6 +2,7 @@ package com.rbc.hacky.service;
 
 import com.google.common.collect.Lists;
 import com.rbc.hacky.FundController;
+import com.rbc.hacky.model.CityWIthFund;
 import com.rbc.hacky.model.Fund;
 import com.rbc.hacky.model.FundRepository;
 import com.rbc.hacky.model.Transfer;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import static com.rbc.hacky.model.CityWIthFund.mockedCityFunds;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Component
@@ -50,6 +52,10 @@ public class FundService {
         );
 
        return fundTransferMap;
+    }
+
+    public List<CityWIthFund> getCityFundMap() {
+        return mockedCityFunds;
     }
 
     private static double generateRandomTransferRate (int fund1, int fund2) {
