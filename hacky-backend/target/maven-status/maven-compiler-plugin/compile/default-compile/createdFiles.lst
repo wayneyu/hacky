@@ -1,0 +1,6 @@
+com\rbc\hacky\service\FundService.class
+com\rbc\hacky\HackyApplication.class
+com\rbc\hacky\model\Fund.class
+com\rbc\hacky\model\Transfer.class
+com\rbc\hacky\model\FundRepository.class
+com\rbc\hacky\FundController.class

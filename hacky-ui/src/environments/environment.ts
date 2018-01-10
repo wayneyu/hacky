@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   envName: 'local',
-  api: location.protocol + '//' + location.hostname + ':' + location.port + '/'
+  // api: location.protocol + '//' + location.hostname + ':' + location.port + '/'
+  api: 'http://localhost:8080'
 };

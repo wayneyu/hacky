@@ -12,7 +12,7 @@ import { FUNDS } from '../mock-funds';
 
 @Injectable()
 export class FundService {
-  private FUND_API_PATH = environment.api + 'hacky/api/funds';
+  private FUND_API_PATH = environment.api + '/funds';
 
   /*
    constructor(private http: Http) {
@@ -20,7 +20,7 @@ export class FundService {
    }
  */
   constructor(
-    //private http: HttpClient,
+    private http: HttpClient,
               private messageService: MessageService) {
   }
 
@@ -29,21 +29,20 @@ export class FundService {
     this.messageService.add('FundService: ' + message);
   }
 
-  getFunds() {
-    return FUNDS;
+
+  getFunds(): Observable<Fund[]> {
+    return this.http.get<Fund[]>(this.FUND_API_PATH) ;
   }
-  // getFunds(): Observable<Fund[]> {
-  //   return of(FUNDS);
-  // }
+
   // getAllFunds() {
-    // this.http.get(this.FUND_API_PATH)
-      // .subcribe(
-      //   (funds) => {
-      //     this.populateFundList(funds);
-      //   }
-      // )
-     // .map(res => res.json() || [])
-  //}
+  //   this.http.get(this.FUND_API_PATH)
+  //     .subcribe(
+  //       (funds) => {
+  //         this.populateFundList(funds);
+  //       }
+  //     )
+  //    .map(res => res.json() || [])
+  // }
 
 //  populateFundList (funds: Array<Fund>) {
 //    this.listS
