@@ -39,7 +39,7 @@ import { MessageService } from './common/message.service'
     AngularMaterialModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAAT7o3F1_8wWPVlA_O0nxpHgyTtPKHw6c'
-    })
+    }),
     AngularMaterialModule,
     MatTabsModule,
     MatTableModule,
