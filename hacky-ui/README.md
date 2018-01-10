@@ -1,6 +1,11 @@
 # HackyUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
+
+Install Angular Material 
+npm install --save @angular/material @angular/cdk
+npm install --save @angular/animations
+npm install --save hammerjs
 
 ## Development server
 
