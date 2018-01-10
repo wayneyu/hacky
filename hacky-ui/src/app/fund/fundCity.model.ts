@@ -5,4 +5,5 @@ export class FundCity {
     city: string;
     lon : number;
     lat : number;
+    color:string;
   }

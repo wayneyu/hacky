@@ -30,7 +30,18 @@ export class FundCityService {
   }
 
   getFunds() {
-    return FUNDCITYS;
+      var scaledFunds: FundCity[] = FUNDCITYS.slice();
+      var i:number;
+
+    for(i = 0; i < scaledFunds.length; i++)
+    {
+        
+        scaledFunds[i].netAmount *= 0.3;
+    }
+
+    console.log(scaledFunds);
+      
+    return scaledFunds;
   }
   // getFunds(): Observable<Fund[]> {
   //   return of(FUNDS);
