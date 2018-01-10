@@ -1,7 +1,16 @@
-## Hacky backend node-express server
+## Java-Spring based backend
 
-To install:
-`npm install`
+Before running: 
+* `mvn clean install`
+* Fill in MYSQL server info under `application.properties`
 
-To run:
-`nodejs server.js`
+Default port is : `8080`
+
+Endpoints:
+- `/funds` - get all funds
+   * Supports paging and sorting.
+   * Exmaple: `/funds?page=0&size=3&sort=topPerformance&direction=DESC`
+   
+- `/funds/transferMap` - get all funds' transfer info
+   * This endpoint currently randoms the transfer amount, but caches the result
+   * Exmaple: `funds/transferMap`
