@@ -23,7 +23,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/funds")
-@CrossOrigin(maxAge = 3600)
 public class FundController {
 
     private final FundService fundService;
