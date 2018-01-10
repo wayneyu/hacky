@@ -1,6 +1,7 @@
 package com.rbc.hacky;
 
 import com.rbc.hacky.model.Fund;
+import com.rbc.hacky.model.Transfer;
 import com.rbc.hacky.service.FundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +41,7 @@ public class FundController {
     }
 
     @RequestMapping(value = "/transferMap", method = RequestMethod.GET)
-    public HttpEntity<Map<String,List<AbstractMap.SimpleEntry<String,Integer>>>> getTransferMap() {
+    public HttpEntity<Map<String, List<Transfer>>> getTransferMap() {
         return new ResponseEntity<>(fundService.createFundTransferGraph(), HttpStatus.OK);
     }
 }

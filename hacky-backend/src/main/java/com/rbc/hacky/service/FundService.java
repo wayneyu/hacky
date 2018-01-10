@@ -1,17 +1,20 @@
 package com.rbc.hacky.service;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.rbc.hacky.FundController;
 import com.rbc.hacky.model.Fund;
 import com.rbc.hacky.model.FundRepository;
+import com.rbc.hacky.model.Transfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -34,24 +37,24 @@ public class FundService {
     }
 
     @Cacheable("transferMapCache")
-    public  Map<String,List<AbstractMap.SimpleEntry<String,Integer>>> createFundTransferGraph() {
+    public  Map<String,List<Transfer>> createFundTransferGraph() {
 
         List<Fund> allFunds = Lists.newArrayList(fundRepository.findAll());
 
-        Map<String,List<AbstractMap.SimpleEntry<String,Integer>>> fundTransferMap = new HashMap<>();
+        Map<String,List<Transfer>> fundTransferMap = new HashMap<>();
 
         allFunds.forEach(fund ->
             fundTransferMap.put(fund.getName(), allFunds.stream().map(fund1 ->
-                    new AbstractMap.SimpleEntry<>(fund1.getName(), generateRandomTransferRate(fund.getFundId(), fund1.getFundId()))
+                    new Transfer(fund1.getName(), generateRandomTransferRate(fund.getFundId(), fund1.getFundId()))
             ).collect(Collectors.toList()))
         );
 
        return fundTransferMap;
     }
 
-    private static int generateRandomTransferRate (int fund1, int fund2) {
+    private static double generateRandomTransferRate (int fund1, int fund2) {
         Random rand = new Random();
-        return fund1 == fund2 ? 0 : rand.nextInt(20000) - 9999;
+        return fund1 == fund2 ? 0.0 : rand.nextDouble() * 20000 - 9999;
     }
 
 }
