@@ -12,15 +12,15 @@
                         <agm-circle *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [radius]="data.netAmount"
+                                [radius]='data.netAmount | scaleFactor:0.3'
                                 [fillColor]="data.color"
                         ></agm-circle>
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [label]="'CAD $' + data.netAmount.toFixed(2)"></agm-marker>
-                        
-                        
+                                [label]='data.netAmount | currency: "CAD$"'></agm-marker>
+
+
                         </agm-map>
         </mat-card-content>
       </mat-card>
