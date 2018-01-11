@@ -1,15 +1,27 @@
-<agm-map [latitude]="fundCityList[0].lat" [longitude]="fundCityList[0].lon">
+<div style="padding-left: 40px; padding-right: 40px;">
 
-<agm-circle *ngFor="let data of fundCityList"
-        [latitude]="data.lat"
-        [longitude]="data.lon"
-        [radius]='data.netAmount | scaleFactor:0.3'
-        [fillColor]="data.color"
-></agm-circle>
-<agm-marker *ngFor="let data of fundCityList"
-        [latitude]="data.lat"
-        [longitude]="data.lon"
-        [label]='data.netAmount | currency: "CAD$"'></agm-marker>
+<mat-toolbar color="primary">
+        <span>My Application</span>
+</mat-toolbar>
+<mat-card class="item-card">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+                <agm-map [latitude]="fundCityList[0].lat" [longitude]="fundCityList[0].lon">
+
+                        <agm-circle *ngFor="let data of fundCityList"
+                                [latitude]="data.lat"
+                                [longitude]="data.lon"
+                                [radius]='data.netAmount | scaleFactor:0.3'
+                                [fillColor]="data.color"
+                        ></agm-circle>
+                        <agm-marker *ngFor="let data of fundCityList"
+                                [latitude]="data.lat"
+                                [longitude]="data.lon"
+                                [label]='data.netAmount | currency: "CAD$"'></agm-marker>
 
 
-</agm-map>
+                        </agm-map>
+        </mat-card-content>
+      </mat-card>
+</div>
