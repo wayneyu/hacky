@@ -13,7 +13,7 @@
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
                                 [radius]='data.netAmount | scaleFactor:0.3'
-                                [fillColor]="data.color"
+                                [fillColor]="data.netAmount | circleColor: 'green':'red'"
                         ></agm-circle>
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"

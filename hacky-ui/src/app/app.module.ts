@@ -22,6 +22,7 @@ import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
 import { FundCityService } from './fund/fund-city-service/fund-city-service';
 import { ScalePipe } from './components/circle-map/scale.pipe';
+import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ScalePipe } from './components/circle-map/scale.pipe';
     CardComponent,
     MenuComponent,
     SankeyComponent,
-    ScalePipe
+    ScalePipe,
+    CircleColorPipe
   ],
   imports: [
     BrowserModule,
