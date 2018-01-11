@@ -13,6 +13,7 @@ import org.springframework.data.web.SortDefault;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/funds")
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 public class FundController {
 
     private final FundService fundService;
