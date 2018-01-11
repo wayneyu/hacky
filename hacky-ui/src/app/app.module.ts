@@ -16,6 +16,7 @@ import {CardComponent} from "./components/card/card.component";
 import {CircleMapComponent} from "./components/circle-map/circle-map.component";
 import { AgmCoreModule } from '@agm/core';
 import {MenuComponent} from "./components/menu/menu.component";
+import {SankeyComponent} from "./components/sankey/sankey.component";
 
 import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
@@ -30,7 +31,8 @@ import { FundCityService } from './fund/fund-city-service/fund-city-service';
     FundListComponent,
     AppComponent,
     CardComponent,
-    MenuComponent
+    MenuComponent,
+    SankeyComponent
   ],
   imports: [
     BrowserModule,
