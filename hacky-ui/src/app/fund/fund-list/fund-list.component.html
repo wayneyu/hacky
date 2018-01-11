@@ -7,27 +7,39 @@
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Fund Name </mat-header-cell>
       <mat-cell *matCellDef="let fund"> {{fund.name}} </mat-cell>
     </ng-container>
 
+    <!-- Position Column -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell class="col1" *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+      <mat-cell class="col1" *matCellDef="let fund"> {{fund.price}} </mat-cell>
+    </ng-container>
+
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    <ng-container matColumnDef="topSubscriber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Top Subscriber </mat-header-cell>
       <mat-cell *matCellDef="let fund"> {{fund.topSubscriber}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="subscribe">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Subscribe Rank </mat-header-cell>
+    <ng-container matColumnDef="topPerformance">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Top Performance </mat-header-cell>
       <mat-cell *matCellDef="let fund"> {{fund.topPerformance}} </mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
+    <ng-container matColumnDef="percentDealers">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Percent Dealers </mat-header-cell>
       <mat-cell *matCellDef="let fund"> {{fund.percentDealers}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+      <mat-cell *matCellDef="let fund"> {{fund.category}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -12,3 +12,8 @@
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
 }
+
+.col1 {
+  max-width: 100px;
+  color: red;
+}

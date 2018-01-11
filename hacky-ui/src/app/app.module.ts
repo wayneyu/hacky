@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule }     from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import {AngularMaterialModule} from './angular-material.module';
 import {MatTabsModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
@@ -18,6 +19,7 @@ import {MenuComponent} from "./components/menu/menu.component";
 
 import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
+import {fundReducer} from "./fund/fund-datastore/fund-datastore.reducer";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import { MessageService } from './common/message.service'
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+ //   StoreModule.forRoot({ reducer: reducer }),
+ //   StoreModule.forRoot({FundStore: fundReducer})
+    StoreDevtoolsModule.instrument()
   ],
   providers: [HttpClient, MessageService, FundService],
   bootstrap: [AppComponent]
