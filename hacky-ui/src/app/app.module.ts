@@ -21,6 +21,7 @@ import {SankeyComponent} from "./components/sankey/sankey.component";
 import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
 import { FundCityService } from './fund/fund-city-service/fund-city-service';
+import { ScalePipe } from './components/circle-map/scale.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FundCityService } from './fund/fund-city-service/fund-city-service';
     AppComponent,
     CardComponent,
     MenuComponent,
-    SankeyComponent
+    SankeyComponent,
+    ScalePipe
   ],
   imports: [
     BrowserModule,

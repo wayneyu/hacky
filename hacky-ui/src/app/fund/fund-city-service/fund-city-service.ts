@@ -29,19 +29,10 @@ export class FundCityService {
     this.messageService.add('FundCityService: ' + message);
   }
 
+
   getFunds() {
-      var scaledFunds: FundCity[] = FUNDCITYS.slice();
-      var i:number;
-
-    for(i = 0; i < scaledFunds.length; i++)
-    {
-        
-        scaledFunds[i].netAmount *= 0.3;
-    }
-
-    console.log(scaledFunds);
-      
-    return scaledFunds;
+     
+    return FUNDCITYS;
   }
   // getFunds(): Observable<Fund[]> {
   //   return of(FUNDS);
