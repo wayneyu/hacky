@@ -20,6 +20,7 @@ import {MenuComponent} from "./components/menu/menu.component";
 import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
 import { FundCityService } from './fund/fund-city-service/fund-city-service';
+import { ScalePipe } from './components/circle-map/scale.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FundCityService } from './fund/fund-city-service/fund-city-service';
     FundListComponent,
     AppComponent,
     CardComponent,
-    MenuComponent
+    MenuComponent,
+    ScalePipe
   ],
   imports: [
     BrowserModule,
