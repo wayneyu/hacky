@@ -4,6 +4,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule }     from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import {AngularMaterialModule} from './angular-material.module';
 import {MatTabsModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
@@ -36,9 +37,10 @@ import { MessageService } from './common/message.service'
     MatTabsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
-  providers: [MessageService, FundService],
+  providers: [HttpClient, MessageService, FundService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

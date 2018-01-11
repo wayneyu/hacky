@@ -1,5 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
 
 import { FundService } from '../fund-service/fund-service';
 import { Fund } from "../fund.model"
@@ -11,15 +12,22 @@ import { Fund } from "../fund.model"
 
 export class FundListComponent {
 
+  //fundList: Observable<Fund[]>;
   fundList: Fund[];
+
   displayedColumns = ['position', 'name', 'subscribe', 'symbol'];
   dataSource: MatTableDataSource<Fund>;
 
   constructor(private fundService: FundService) {}
 
   ngOnInit() {
-    this.fundList = this.fundService.getFunds();
-    this.dataSource = new MatTableDataSource(this.fundList);
+  //  this.fundList = this.fundService.getFunds();
+ //   this.fundService.getFunds().subscribe(data => {this.fundList = data});
+    this.fundService.getFunds();
+    //this.fundService.getFunds().subscribe(data => console.log(data));
+    console.log('Get from API: ');
+ //   console.log(this.fundList);
+    //this.dataSource = new MatTableDataSource(this.fundList);
 
 
   }
