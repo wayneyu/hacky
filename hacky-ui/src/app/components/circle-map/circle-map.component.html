@@ -12,17 +12,27 @@
                         <agm-circle *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [radius]='data.netAmount | scaleFactor:0.3'
-                                [fillColor]="data.netAmount | circleColor: 'green':'red'"
+                                [radius]='data.total | scaleFactor:0.0001'
+                                [fillColor]="data.total | circleColor: 'green':'red'"
                         ></agm-circle>
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [label]='data.netAmount | currency: "CAD$"'>
+                                [label]='data.total | currency: "CAD$"'>
 
-                                <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                                <agm-snazzy-info-window [maxWidth]="500" [closeWhenOthersOpen]="true">
                                         <ng-template>
-                                          My first Snazzy Info Window!
+                                                <h2>{{data.city}}, {{data.state}}</h2>
+                                                <table>
+                                                        <tr *ngFor="let item of data.fundname; let i = index" [attr.data-index]="i" >     
+                                                                   <td>{{item}}</td>
+                                                                   <td>{{data.netAmount[i] | currency: 'CAD$'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>Total</td>
+                                                                <td>{{data.total | currency: 'CAD$'}}</td>
+                                                        </tr>
+                                                </table>
                                         </ng-template>
                                       </agm-snazzy-info-window>
 
