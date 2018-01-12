@@ -2,13 +2,14 @@
 
 var currentNodeSubj = new Rx.Subject();
 currentNodeSubj.subscribe(value => {
+  console.log(value);
   document.getElementById("fundName").innerHTML=value.name;
   document.getElementById("fundnetFlow").innerHTML=(value.netFlow/1000000).toFixed(4);
-  document.getElementById("fundnet").innerHTML=value.children[0].net.toFixed(4);
+  document.getElementById("fundnet").innerHTML=(value.children[0].net/1000000).toFixed(4);
   document.getElementById("fund12mo").innerHTML=(Math.random() - 0.5).toFixed(2) * 4;
   document.getElementById("fundCategory").innerHTML=value.children[0].category;
   document.getElementById("fundMer").innerHTML=value.children[0].category = Math.random().toFixed(2) + .5;
-  console.log(value);
+  
 });
 
 var svg, tooltip, biHiSankey, path, defs, colorScale, highlightColorScale, isTransitioning;
@@ -21,9 +22,9 @@ var OPACITY = {
     LINK_FADED: 0.05,
     LINK_HIGHLIGHT: 0.9
   },
-  TYPES = ["Fund"],
-  TYPE_COLORS = ["#0000cd"],
-  TYPE_HIGHLIGHT_COLORS = ["#66c2a5"],
+  TYPES = ["Fund", "NegFund"],
+  TYPE_COLORS = ["#0000cd","ff0000"],
+  TYPE_HIGHLIGHT_COLORS = ["#66c2a5","#66c2a5"],
   LINK_COLOR = "#b3b3b3",
   INFLOW_COLOR = "#2E86D1",
   OUTFLOW_COLOR = "#D63028",
@@ -518,18 +519,18 @@ var exampleNodes = [
   {"type":"Fund","id":0,"parent":"fund0","net":940698.47,"name":"BALANCED FUND", "category":"Canadian Neutral Balanced"},
   {"type":"Fund","id":"fund1","parent":null,"name":"RBC BALANCED FUND SERIES D"},
   {"type":"Fund","id":1,"parent":"fund1","net":2837590.32,"name":"RBC BALANCED FUND SERIES D", "category":"Canadian Neutral Balanced"},
-  {"type":"Fund","id":"fund2","parent":null,"name":"RBC CANADIAN DIVIDEND FUND"},
-  {"type":"Fund","id":2,"parent":"fund2","net":-185273863.91,"name":"RBC CANADIAN DIVIDEND FUND", "category":"Canadian Dividend & Income Equity"},
-  {"type":"Fund","id":"fund3","parent":null,"name":"RBC CANADIAN DIVIDEND FUND-ISC"},
-  {"type":"Fund","id":3,"parent":"fund3","net":-2390593.89,"name":"RBC CANADIAN DIVIDEND FUND-ISC", "category":"Canadian Dividend & Income Equity"},
-  {"type":"Fund","id":"fund4","parent":null,"name":"RBC CANADIAN DIVIDEND FUND-LL"},
-  {"type":"Fund","id":4,"parent":"fund4","net":-1469763.63,"name":"RBC CANADIAN DIVIDEND FUND-LL", "category":"Canadian Dividend & Income Equity"},
+  {"type":"NegFund","id":"fund2","parent":null,"name":"RBC CANADIAN DIVIDEND FUND"},
+  {"type":"NegFund","id":2,"parent":"fund2","net":-185273863.91,"name":"RBC CANADIAN DIVIDEND FUND", "category":"Canadian Dividend & Income Equity"},
+  {"type":"NegFund","id":"fund3","parent":null,"name":"RBC CANADIAN DIVIDEND FUND-ISC"},
+  {"type":"NegFund","id":3,"parent":"fund3","net":-2390593.89,"name":"RBC CANADIAN DIVIDEND FUND-ISC", "category":"Canadian Dividend & Income Equity"},
+  {"type":"NegFund","id":"fund4","parent":null,"name":"RBC CANADIAN DIVIDEND FUND-LL"},
+  {"type":"NegFund","id":4,"parent":"fund4","net":-1469763.63,"name":"RBC CANADIAN DIVIDEND FUND-LL", "category":"Canadian Dividend & Income Equity"},
   {"type":"Fund","id":"fund5","parent":null,"name":"RBC CANADIAN DIVIDEND FUND SERIES D"},
   {"type":"Fund","id":5,"parent":"fund5","net":18133253.70,"name":"RBC CANADIAN DIVIDEND FUND SERIES D", "category":"Canadian Dividend & Income Equity"},
   {"type":"Fund","id":"fund6","parent":null,"name":"SELECT BALANCED PORTFOLIO"},
   {"type":"Fund","id":6,"parent":"fund6","net":1093410.50,"name":"SELECT BALANCED PORTFOLIO", "category":"Global Neutral Balanced"},
-  {"type":"Fund","id":"fund7","parent":null,"name":"SELECT CONSERVATIVE"},
-  {"type":"Fund","id":7,"parent":"fund7","net":-1692762.77,"name":"SELECT CONSERVATIVE", "category":"Global Neutral Balanced"}
+  {"type":"NegFund","id":"fund7","parent":null,"name":"SELECT CONSERVATIVE"},
+  {"type":"NegFund","id":7,"parent":"fund7","net":-1692762.77,"name":"SELECT CONSERVATIVE", "category":"Global Neutral Balanced"}
 ]
 
 var exampleLinks = [
