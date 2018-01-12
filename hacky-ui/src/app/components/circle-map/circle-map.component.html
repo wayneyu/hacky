@@ -1,27 +1,56 @@
+<menu></menu>
 <div style="padding-left: 40px; padding-right: 40px;">
-
 <mat-toolbar color="primary">
-        <span>My Application</span>
+        <span>Gross Value by City</span>
 </mat-toolbar>
 <mat-card class="item-card">
         <mat-card-header>
         </mat-card-header>
         <mat-card-content>
-                <agm-map [latitude]="fundCityList[0].lat" [longitude]="fundCityList[0].lon">
+                <agm-map [longitude]=-92.380900 [latitude]=50.247700  [zoom]=4>
 
                         <agm-circle *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [radius]="data.netAmount"
-                                [fillColor]="data.color"
+                                [radius]='data.total | scaleFactor:0.0001'
+                                [fillColor]="data.total | circleColor: 'green':'red'"
                         ></agm-circle>
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [label]="'CAD $' + data.netAmount.toFixed(2)"></agm-marker>
-                        
-                        
-                        </agm-map>
+                                [title]='(data.city) + " [" + (data.total | currency: "CAD$") + "]"'>
+
+                                <agm-snazzy-info-window [maxWidth]="800" [maxHeight]="900"  [closeWhenOthersOpen]="true">
+                                        <ng-template>
+                                                <h2>{{data.city}}, {{data.state}}</h2>
+                                                <h3>Total : {{data.total | currency: "CAD$"}}</h3>
+
+                                                <mat-table #table [dataSource]="data.datasource">
+
+                                                        
+                                                    
+                                                        <!-- Name Column -->
+                                                        <ng-container matColumnDef="fundname">
+                                                          <mat-header-cell *matHeaderCellDef> Fund Name </mat-header-cell>
+                                                          <mat-cell *matCellDef="let element"> {{element.fundname}} </mat-cell>
+                                                        </ng-container>
+                                                    
+                                                    
+                                                        <!-- Symbol Column -->
+                                                        <ng-container matColumnDef="netAmount">
+                                                          <mat-header-cell *matHeaderCellDef> Net Amount </mat-header-cell>
+                                                          <mat-cell  *matCellDef="let element"> {{element.netAmount}} </mat-cell>
+                                                        </ng-container>
+                                                    
+                                                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                </mat-table>
+                                                
+                                        </ng-template>
+                                      </agm-snazzy-info-window>
+
+                        </agm-marker>              
+                </agm-map>
         </mat-card-content>
       </mat-card>
 </div>
