@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AgmCoreModule } from '@agm/core';
 import { FundCity } from '../../fund/fundCity.model';
 import { FundCityService } from '../../fund/fund-city-service/fund-city-service';
 import { forEach } from '@angular/router/src/utils/collection';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 export class FundRow{
   fundname: string;
@@ -17,6 +17,7 @@ export class FundRow{
 }
 
 export class FundCityGroup {
+  
 constructor(){
   this.datasource = new MatTableDataSource<FundRow>();
 
@@ -41,8 +42,17 @@ export class CircleMapComponent implements OnInit {
   displayedColumns = ['fundname', 'netAmount'];
   fundCityList : FundCityGroup[];
 
+
+  
   constructor(private fundCityService: FundCityService) {
     this.fundCityList = new Array<FundCityGroup>();
+  }
+
+  @ViewChild(MatSort) sort: MatSort;
+  ngAfterViewInit() {
+    for(let i = 0; i < this.fundCityList.length; i++) {
+      this.fundCityList[i].datasource.sort = this.sort;
+    }
   }
 
   ngOnInit() {
