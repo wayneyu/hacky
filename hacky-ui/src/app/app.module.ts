@@ -25,9 +25,10 @@ import { FundCityService } from './fund/fund-city-service/fund-city-service';
 import { ScalePipe } from './components/circle-map/scale.pipe';
 import { ChartsModule } from 'ng2-charts';
 import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
-import { PieChartComponent } from 'app/components/pie-chart/pie-chart.component';
-import { Globals } from 'app/globals';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { Globals } from './globals';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SwapIconPipe } from './components/circle-map/swapIcon.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PieChartComponent,
     ScalePipe,
     CircleColorPipe,
+    SwapIconPipe
   ],
   imports: [
     BrowserModule,
