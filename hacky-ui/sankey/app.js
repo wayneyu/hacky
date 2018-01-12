@@ -5,10 +5,10 @@ currentNodeSubj.subscribe(value => {
   console.log(value);
   document.getElementById("fundName").innerHTML=value.name;
   document.getElementById("fundnetFlow").innerHTML=(value.netFlow/1000000).toFixed(4);
-  document.getElementById("fundnet").innerHTML=(value.children[0].net/1000000).toFixed(4);
+  // document.getElementById("fundnet").innerHTML=(value.children[0].net/1000000).toFixed(4);
   document.getElementById("fund12mo").innerHTML=(Math.random() - 0.5).toFixed(2) * 4;
   document.getElementById("fundCategory").innerHTML=value.children[0].category;
-  document.getElementById("fundMer").innerHTML= Math.random().toFixed(2) + .5;
+  document.getElementById("fundMer").innerHTML= Math.random().toFixed(2);
   
 });
 
@@ -104,8 +104,8 @@ biHiSankey = d3.biHiSankey();
 biHiSankey
   .nodeWidth(NODE_WIDTH)
   .nodeSpacing(10)
-  .linkSpacing(4)
-  .arrowheadScaleFactor(0.5) // Specifies that 0.5 of the link's stroke WIDTH should be allowed for the marker at the end of the link.
+  .linkSpacing(10)
+  .arrowheadScaleFactor(1) // Specifies that 0.5 of the link's stroke WIDTH should be allowed for the marker at the end of the link.
   .size([WIDTH, HEIGHT]);
 
 path = biHiSankey.link().curvature(0.45);
