@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule }     from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpModule} from '@angular/http';
 
 import {AngularMaterialModule} from './angular-material.module';
 import {MatTabsModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
