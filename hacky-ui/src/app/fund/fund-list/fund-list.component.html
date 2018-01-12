@@ -1,7 +1,7 @@
 <menu></menu>
 <div style="padding-left: 40px; padding-right: 40px;">
 <mat-toolbar color="primary">
-  <span>Canadian Mutual Fund</span>
+  <span>Fund Switch</span>
 </mat-toolbar>
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
@@ -11,38 +11,44 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Fund Name </mat-header-cell>
-      <mat-cell *matCellDef="let fund"> {{fund.name}} </mat-cell>
-    </ng-container>
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="price">
-      <mat-header-cell class="col1" *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
-      <mat-cell class="col1" *matCellDef="let fund"> {{fund.price}} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="topSubscriber">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Top Subscriber </mat-header-cell>
-      <mat-cell *matCellDef="let fund"> {{fund.topSubscriber}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="topPerformance">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Top Performance </mat-header-cell>
-      <mat-cell *matCellDef="let fund"> {{fund.topPerformance}} </mat-cell>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="percentDealers">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Percent Dealers </mat-header-cell>
-      <mat-cell *matCellDef="let fund"> {{fund.percentDealers}} </mat-cell>
+      <mat-header-cell class="col1" *matHeaderCellDef mat-sort-header> Fund Name </mat-header-cell>
+      <mat-cell class="col1" *matCellDef="let fund"> {{fund.name}} </mat-cell>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
-      <mat-cell *matCellDef="let fund"> {{fund.category}} </mat-cell>
+      <mat-header-cell class="col2" *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+      <mat-cell class="col2" *matCellDef="let fund"> {{fund.category}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="performance">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Performance </mat-header-cell>
+      <mat-cell *matCellDef="let fund"> {{fund.performance}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="mgmtFee">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Management Fee </mat-header-cell>
+      <mat-cell *matCellDef="let fund"> {{fund.mgmtFee}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="mer">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> MER </mat-header-cell>
+      <mat-cell *matCellDef="let fund"> {{fund.mer}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="numInv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Number of Inverstors </mat-header-cell>
+      <mat-cell *matCellDef="let fund"> {{fund.numInv}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="gross">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Gross Amount </mat-header-cell>
+      <mat-cell *matCellDef="let fund"> {{fund.gross}} </mat-cell>
     </ng-container>
 
     <!-- Expanded Content Column - The detail row is made up of this one column -->

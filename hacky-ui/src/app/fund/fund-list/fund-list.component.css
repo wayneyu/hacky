@@ -14,8 +14,11 @@
 }
 
 .col1 {
-  max-width: 100px;
-  color: red;
+  min-width: 330px;
+}
+
+.col2 {
+
 }
 
 .element-row {

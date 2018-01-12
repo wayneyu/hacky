@@ -37,12 +37,12 @@ import { PieChartComponent } from 'app/components/pie-chart/pie-chart.component'
     AppComponent,
     CardComponent,
     MenuComponent,
-    CdkDetailRowDirective
+    CdkDetailRowDirective,
     MenuComponent,
     SankeyComponent,
     PieChartComponent,
     ScalePipe,
-    CircleColorPipe,
+    CircleColorPipe
   ],
   imports: [
     BrowserModule,
@@ -60,7 +60,7 @@ import { PieChartComponent } from 'app/components/pie-chart/pie-chart.component'
     MatPaginatorModule,
     HttpClientModule,
     MatPaginatorModule,
-    ChartsModule,
+    ChartsModule
   ],
   providers: [MessageService, FundService, FundCityService],
   bootstrap: [AppComponent]

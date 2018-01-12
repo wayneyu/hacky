@@ -1,79 +1,56 @@
 import { Fund } from './fund.model';
 
-export const FUNDS: Fund[] = [
-  {
-    name: "Hacky Health Sciences Corporate Class A UG",
-    topSubscriber: 10,
-    topPerformance: 6,
-    percentDealers: 9,
-    category: "Sector Equity",
-    price: 18.2,
-    fundId: 10,
-    links: [
-      {
-        rel: "self",
-        href: "http://localhost:8090/funds/10"
-      }
+export const FUNDS: Fund[] =
+  [
+  {"fundId":"557","category":"U.S. Equity","name":"U.S. INDEX","performance":5.4,"mgmtFee":0.5,"mer":0.72,"numInv":676,"gross":4331357.71},
+    {"fundId":"556","category":"Canadian Equity","name":"CANADIAN INDEX","performance":0.4,"mgmtFee":0.5,"mer":0.72,"numInv":452,"gross":-616194.95},
+    {"fundId":"559","category":"International Equity","name":"RBC INT'L IDX CURRENCY NEUTRAL FUND","performance":7.8,"mgmtFee":0.5,"mer":0.71,"numInv":264,"gross":-705304.98},
+    {"fundId":"558","category":"U.S. Equity","name":"RBC U.S.INDEX CURRENCY NEUTRAL FUND","performance":9.2,"mgmtFee":0.5,"mer":0.72,"numInv":209,"gross":-2734911.84},
+    {"fundId":"563","category":"Canadian Fixed Income","name":"RBC CANADIAN GOV BOND INDEX-A","performance":0.6,"mgmtFee":0.5,"mer":0.67,"numInv":117,"gross":-906370.85},
+    {"fundId":"700","category":"Canadian Fixed Income","name":"RBC CANADIAN BOND INDEX FUND A","performance":2.1,"mgmtFee":0.6,"mer":0.92,"numInv":42,"gross":-1115009.18},
+    {"fundId":"270","category":"Canadian Fixed Income","name":"BOND FUND","performance":2.4,"mgmtFee":0.9,"mer":1.11,"numInv":419,"gross":-5061557.05},
+    {"fundId":"495","category":"Canadian Fixed Income","name":"RBC MONTHLY INCOME BOND - A","performance":1.4,"mgmtFee":0.9,"mer":1.09,"numInv":242,"gross":-2981532.23},
+    {"fundId":"264","category":"Canadian Short Term Fixed Income","name":"CDN. SHORT-TERM INCOME","performance":0,"mgmtFee":0.9,"mer":1.05,"numInv":136,"gross":-1782936.19},
+    {"fundId":"7610","category":"Canadian Fixed Income","name":"RBC VISION BOND FUND A","performance":1.9,"mgmtFee":0.9,"mer":1.04,"numInv":5,"gross":null},
+    {"fundId":"448","category":"Canadian Neutral Balanced","name":"MONTHLY INCOME","performance":2,"mgmtFee":1,"mer":1.2,"numInv":496,"gross":-33590771.19},
+    {"fundId":"484","category":"Global Fixed Income","name":"RBC $US INV. GR. CORP. BOND FD A","performance":3.5,"mgmtFee":1.1,"mer":1.27,"numInv":6,"gross":57515.57},
+    {"fundId":"552","category":"U.S. Equity","name":"O'SHAUGHNESSY U.S. VALUE","performance":7.7,"mgmtFee":1.25,"mer":1.55,"numInv":390,"gross":-8446912.33},
+    {"fundId":"550","category":"Canadian Focused Equity","name":"O'SHAUGHNESSY CDN EQUITY","performance":0.2,"mgmtFee":1.25,"mer":1.54,"numInv":189,"gross":-3498020.64},
+    {"fundId":"496","category":"High Yield Fixed Income","name":"RBC HIGH YIELD BOND - A","performance":3.3,"mgmtFee":1.25,"mer":1.43,"numInv":134,"gross":-1303245.54},
+    {"fundId":"551","category":"U.S. Small/Mid Cap Equity","name":"O'SHAUGHNESSY U.S. GROWTH","performance":1.2,"mgmtFee":1.25,"mer":1.55,"numInv":114,"gross":-1083594.1},
+    {"fundId":"483","category":"High Yield Fixed Income","name":"RBC $US HIGH YIELD BOND FUND A","performance":3.4,"mgmtFee":1.25,"mer":1.42,"numInv":2,"gross":null},
+    {"fundId":"267","category":"Global Fixed Income","name":"GLOBAL BOND","performance":0.7,"mgmtFee":1.35,"mer":1.61,"numInv":174,"gross":-73636.04},
+    {"fundId":"401","category":"Global Fixed Income Balanced","name":"RBC CONSERV. GROWTH & INC FD A","performance":3.1,"mgmtFee":1.4,"mer":1.69,"numInv":47,"gross":426794.01},
+    {"fundId":"503","category":"Global Fixed Income Balanced","name":"RBC U.S. MONTHLY INCOME FD (CAD) A","performance":1.3,"mgmtFee":1.4,"mer":1.65,"numInv":47,"gross":-1540168.92},
+    {"fundId":"1501","category":"Global Fixed Income Balanced","name":"RBC RETIREMENT INCOME SOLUTION A","performance":1.7,"mgmtFee":1.45,"mer":1.69,"numInv":6,"gross":176068.06},
+    {"fundId":"266","category":"Canadian Dividend & Income Equity","name":"RBC CANADIAN DIVIDEND FUND","performance":1,"mgmtFee":1.5,"mer":1.76,"numInv":2403,"gross":-78535908.77},
+    {"fundId":"580","category":"Global Fixed Income","name":"GLOBAL CORPORATE BOND","performance":2.5,"mgmtFee":1.5,"mer":1.74,"numInv":200,"gross":-1515254.02},
+    {"fundId":"482","category":"High Yield Fixed Income","name":"RBC STRATEGIC INC BOND FUND A","performance":2.9,"mgmtFee":1.5,"mer":1.77,"numInv":176,"gross":551939.33},
+    {"fundId":"579","category":"High Yield Fixed Income","name":"RBC GLOBAL HIGH YIELD BOND-A","performance":4.1,"mgmtFee":1.5,"mer":1.78,"numInv":160,"gross":-2003495.26},
+    {"fundId":"593","category":"Canadian Small/Mid Cap Equity","name":"RBC O'SHAUGHNESSY ALL-CDN EQTY NL","performance":0,"mgmtFee":1.5,"mer":1.82,"numInv":97,"gross":-978392.35},
+    {"fundId":"497","category":"High Yield Fixed Income","name":"RBC EMERGING MARKETS BOND - A","performance":1.4,"mgmtFee":1.5,"mer":1.77,"numInv":86,"gross":-1775878.13},
+    {"fundId":"1502","category":"Global Neutral Balanced","name":"RBC RETIREMENT 2020 PORTFOLIO A","performance":3.6,"mgmtFee":1.5,"mer":1.73,"numInv":3,"gross":23123.55},
+    {"fundId":"406","category":"Global Fixed Income","name":"RBC EMERG MKTS FOREIGN EXCHANGE A","performance":3.1,"mgmtFee":1.5,"mer":1.67,"numInv":1,"gross":null},
+    {"fundId":"428","category":"High Yield Fixed Income","name":"RBC EMERG MKTS BD FD (CAD HDGD) A","performance":4.6,"mgmtFee":1.5,"mer":1.88,"numInv":1,"gross":null},
+    {"fundId":"591","category":"Canadian Dividend & Income Equity","name":"RBC CANADIAN EQUITY INCOME FUND NL","performance":1.4,"mgmtFee":1.6,"mer":1.92,"numInv":797,"gross":-15018072.27},
+    {"fundId":"554","category":"North American Equity","name":"RBC NORTH AMERICAN VALUE FUND","performance":3.7,"mgmtFee":1.6,"mer":1.93,"numInv":774,"gross":-11749331.53},
+    {"fundId":"590","category":"U.S. Equity","name":"RBC U.S. DIVIDEND FUND - A","performance":4.5,"mgmtFee":1.6,"mer":1.92,"numInv":501,"gross":-9849537.47},
+    {"fundId":"269","category":"Canadian Equity","name":"CANADIAN EQUITY","performance":0,"mgmtFee":1.6,"mer":1.89,"numInv":327,"gross":-7143557.69},
+    {"fundId":"488","category":"U.S. Equity","name":"RBC QUBE LOW VOL U.S. EQUITY FUND-A","performance":4.4,"mgmtFee":1.6,"mer":1.87,"numInv":227,"gross":-1932913.19},
+    {"fundId":"263","category":"U.S. Equity","name":"U.S. EQUITY CDN$","performance":3.6,"mgmtFee":1.6,"mer":1.94,"numInv":159,"gross":-2563469.93},
+    {"fundId":"265","category":"Canadian Focused Equity","name":"RBC NORTH AMERICAN GROWTH FUND","performance":2,"mgmtFee":1.6,"mer":1.92,"numInv":142,"gross":-2148734.67},
+    {"fundId":"489","category":"Canadian Equity","name":"RBC QUBE LOW VOL CDN EQTY FND-A","performance":3.2,"mgmtFee":1.6,"mer":1.88,"numInv":124,"gross":-497014.84},
+    {"fundId":"302","category":"Canadian Equity","name":"RBC VISION CANADIAN EQUITY FUND A","performance":1.1,"mgmtFee":1.6,"mer":1.92,"numInv":110,"gross":2173737.5},
+    {"fundId":"588","category":"U.S. Equity","name":"RBC US EQUITY CURRENCY NEUTRAL FUND","performance":7.8,"mgmtFee":1.6,"mer":1.93,"numInv":33,"gross":-508830.76},
+    {"fundId":"431","category":"U.S. Equity","name":"RBC US DIV CURRENCY NTRL FUND A","performance":8.2,"mgmtFee":1.6,"mer":1.92,"numInv":19,"gross":63546.98},
+    {"fundId":"9072","category":"Canadian Equity","name":"RBC TREND CANADIAN EQUITY FUND - A","performance":3,"mgmtFee":1.6,"mer":1.85,"numInv":12,"gross":59310.11},
+    {"fundId":"473","category":"U.S. Equity","name":"RBC U.S. EQUITY VALUE FD (CAD)-A","performance":5.3,"mgmtFee":1.6,"mer":1.87,"numInv":11,"gross":-569262.32},
+    {"fundId":"432","category":"U.S. Equity","name":"QUBE L-V US EQ CUR NEUTRAL FD A","performance":8.3,"mgmtFee":1.6,"mer":1.87,"numInv":2,"gross":32258.06},
+    {"fundId":"578","category":"Canadian Neutral Balanced","name":"RBC MANAGED PAYOUT ENH PLUS-A","performance":1.6,"mgmtFee":1.7,"mer":1.94,"numInv":132,"gross":-8842416.1},
+    {"fundId":"481","category":"Global Neutral Balanced","name":"RBC BALANCED GROWTH & INCOME FD A","performance":4,"mgmtFee":1.75,"mer":2.08,"numInv":432,"gross":3164068.4},
+    {"fundId":"468","category":"Precious Metals Equity","name":"RBC GLOBAL PRECIOUS METALS FUND","performance":7.9,"mgmtFee":1.75,"mer":2.13,"numInv":392,"gross":-2933620.79},
+    {"fundId":"462","category":"Global Equity","name":"RBC GLOBAL ENERGY FUND","performance":-24.8,"mgmtFee":1.75,"mer":2.14,"numInv":237,"gross":-1499868.34},
+    {"fundId":"303","category":"Global Equity Balanced","name":"RBC VISION BALANCED FUND A","performance":2.9,"mgmtFee":1.75,"mer":2.21,"numInv":229,"gross":14699472.}
     ]
-  },
-  {
-    name: "Hacky Health Sciences Corporate Class G",
-    topSubscriber: 9,
-    topPerformance: 2,
-    percentDealers: 6,
-    category: "Geographic Equity",
-    price: 48.55,
-    fundId: 9,
-    links: [
-      {
-        rel: "self",
-        href: "http://localhost:8090/funds/9"
-      }
-    ]
-  },
-  {
-    name: "Hacky Leadership Equity Fund Cl G",
-    topSubscriber: 8,
-    topPerformance: 3,
-    percentDealers: 22,
-    category: "Geographic Equity",
-    price: 718.2,
-    fundId: 8,
-    links: [
-      {
-        rel: "self",
-        href: "http://localhost:8090/funds/8"
-      }
-    ]
-  },
-  {
-    name: "Hacky Leadership Equity Fund Cl A",
-    topSubscriber: 7,
-    topPerformance: 4,
-    percentDealers: 15,
-    category: "Global Equity",
-    price: 164.7,
-    fundId: 7,
-    links: [
-      {
-        rel: "self",
-        href: "http://localhost:8090/funds/7"
-      }
-    ]
-  },
-  {
-    name: "Hacky Global Growth Class Series F",
-    topSubscriber: 6,
-    topPerformance: 7,
-    percentDealers: 17,
-    category: "Sector Equity",
-    price: 75.8,
-    fundId: 6,
-    links: [
-      {
-        rel: "self",
-        href: "http://localhost:8090/funds/6"
-      }
-    ]
-  }
-];
+
+

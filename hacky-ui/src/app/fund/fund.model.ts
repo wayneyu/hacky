@@ -1,11 +1,10 @@
-import { FundLink } from './fund-link.model'
 export class Fund {
+  fundId: string;
   name: string;
-  topSubscriber: number;
-  topPerformance: number;
-  percentDealers: number;
   category: string;
-  price: number;
-  fundId: number;
-  links?: FundLink[];
+  performance: number;
+  mgmtFee: number;
+  mer: number;
+  numInv: number;
+  gross: number;
 }

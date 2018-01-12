@@ -30,7 +30,7 @@ export class FundListComponent implements OnInit {
   fundList: Fund[];
   //dataSource: MatTableDataSource<Fund>;
   dataSource = new MatTableDataSource<Fund>();
-  displayedColumns = ['name', 'price', 'topSubscriber', 'topPerformance', 'percentDealers', 'category'];
+  displayedColumns = ['name', 'category', 'performance', 'mgmtFee', 'mer', 'numInv', 'gross'];
 
   isExpansionDetailRow = (index, row) => row.hasOwnProperty('detailRow');
   expandedElement: any;
