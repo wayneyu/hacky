@@ -1,82 +1,82 @@
 <menu></menu>
 <div style="padding-left: 40px; padding-right: 40px;">
-<mat-toolbar color="primary">
-  <span>Fund Switch</span>
-</mat-toolbar>
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort>
+  <mat-toolbar color="primary">
+    <span>Fund Switch</span>
+  </mat-toolbar>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell class="col1" *matHeaderCellDef mat-sort-header> Fund Name </mat-header-cell>
-      <mat-cell class="col1" *matCellDef="let fund"> {{fund.name}} </mat-cell>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell class="col1" *matHeaderCellDef mat-sort-header> Fund Name </mat-header-cell>
+        <mat-cell class="col1" *matCellDef="let fund"> {{fund.name}} </mat-cell>
+      </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="category">
-      <mat-header-cell class="col2" *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
-      <mat-cell class="col2" *matCellDef="let fund"> {{fund.category}} </mat-cell>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="category">
+        <mat-header-cell class="col2" *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+        <mat-cell class="col2" *matCellDef="let fund"> {{fund.category}} </mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="performance">
-      <mat-header-cell class="col3" *matHeaderCellDef mat-sort-header> Performance </mat-header-cell>
-      <mat-cell class="col3" *matCellDef="let fund"> {{fund.performance}} </mat-cell>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="performance">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Performance </mat-header-cell>
+        <mat-cell *matCellDef="let fund"> {{fund.performance}} </mat-cell>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="mgmtFee">
-      <mat-header-cell class="col4" *matHeaderCellDef mat-sort-header> Management Fee </mat-header-cell>
-      <mat-cell class="col4" *matCellDef="let fund"> {{fund.mgmtFee}} </mat-cell>
-    </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="mgmtFee">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Management Fee </mat-header-cell>
+        <mat-cell *matCellDef="let fund"> {{fund.mgmtFee}} </mat-cell>
+      </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="mer">
-      <mat-header-cell class="col5" *matHeaderCellDef mat-sort-header> MER </mat-header-cell>
-      <mat-cell class="col5" *matCellDef="let fund"> {{fund.mer}} </mat-cell>
-    </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="mer">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> MER </mat-header-cell>
+        <mat-cell *matCellDef="let fund"> {{fund.mer}} </mat-cell>
+      </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="numInv">
-      <mat-header-cell class="col6" *matHeaderCellDef mat-sort-header> Number of Inverstors </mat-header-cell>
-      <mat-cell class="col6" *matCellDef="let fund"> {{fund.numInv}} </mat-cell>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="numInv">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Number of Inverstors </mat-header-cell>
+        <mat-cell *matCellDef="let fund"> {{fund.numInv}} </mat-cell>
+      </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="gross">
-      <mat-header-cell class="col7" *matHeaderCellDef mat-sort-header> Gross Amount </mat-header-cell>
-      <mat-cell class="col7" *matCellDef="let fund"> {{fund.gross}} </mat-cell>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="gross">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Gross Amount </mat-header-cell>
+        <mat-cell *matCellDef="let fund"> {{fund.gross}} </mat-cell>
+      </ng-container>
 
-    <!-- Expanded Content Column - The detail row is made up of this one column -->
-    <ng-container matColumnDef="expandedDetail">
-      <mat-cell *matCellDef="let detail">
-        The category of {{detail.fund.name}} is {{detail.fund.category}}<br><br>
-      </mat-cell>
-    </ng-container>
+      <!-- Expanded Content Column - The detail row is made up of this one column -->
+      <ng-container matColumnDef="expandedDetail">
+        <mat-cell *matCellDef="let detail">
+          The category of {{detail.fund.name}} is {{detail.fund.category}}<br><br>
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"
-             matRipple
-             class="element-row"
-             [class.expanded]="expandedElement == row"
-             [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+               matRipple
+               class="element-row"
+               [class.expanded]="expandedElement == row"
+               [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
 
-    </mat-row>
-    <!--mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
-             [@detailExpand]="row.fund == expandedElement ? 'expanded' : 'collapsed'"
-             style="overflow: hidden">
-    </mat-row-->
-  </mat-table>
+      </mat-row>
+      <!--mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+               [@detailExpand]="row.fund == expandedElement ? 'expanded' : 'collapsed'"
+               style="overflow: hidden">
+      </mat-row-->
+    </mat-table>
 
-  <mat-paginator #paginator
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 20]">
-  </mat-paginator>
-</div>
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>
   <ng-template #tpl let-element>
     <div class="mat-row" [@detailExpand] style="overflow: hidden">
       The symbol for {{element.name}} is {{element.symbol}}
