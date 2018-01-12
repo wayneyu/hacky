@@ -23,7 +23,9 @@ import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
 import { FundCityService } from './fund/fund-city-service/fund-city-service';
 import { ScalePipe } from './components/circle-map/scale.pipe';
+import { ChartsModule } from 'ng2-charts';
 import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
+import { PieChartComponent } from 'app/components/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
     CardComponent,
     MenuComponent,
     SankeyComponent,
+    PieChartComponent,
     ScalePipe,
-    CircleColorPipe
+    CircleColorPipe,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
     MatTabsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ChartsModule,
   ],
   providers: [MessageService, FundService, FundCityService],
   bootstrap: [AppComponent]
