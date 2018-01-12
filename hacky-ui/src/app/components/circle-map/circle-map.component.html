@@ -23,7 +23,7 @@
                                 <agm-snazzy-info-window [maxWidth]="800" [maxHeight]="900"  [closeWhenOthersOpen]="true">
                                         <ng-template>
                                                 <h2>{{data.city}}, {{data.state}}</h2>
-                                                <h3>Total : {{data.total | currency: "CAD$"}}</h3>
+                                                <h3>Total : {{data.total | currency: "$"}}</h3>
 
                                                 <mat-table #table [dataSource]="data.datasource">
 
@@ -39,7 +39,7 @@
                                                         <!-- Symbol Column -->
                                                         <ng-container matColumnDef="netAmount">
                                                           <mat-header-cell *matHeaderCellDef> Net Amount </mat-header-cell>
-                                                          <mat-cell  *matCellDef="let element"> {{element.netAmount}} </mat-cell>
+                                                          <mat-cell  *matCellDef="let element"> {{element.netAmount | currency: "$"}} </mat-cell>
                                                         </ng-container>
                                                     
                                                         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
