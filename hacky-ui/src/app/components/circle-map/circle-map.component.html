@@ -20,19 +20,30 @@
                                 [longitude]="data.lon"
                                 [label]='data.total | currency: "CAD$"'>
 
-                                <agm-snazzy-info-window [maxWidth]="500" [closeWhenOthersOpen]="true">
+                                <agm-snazzy-info-window [maxWidth]="800"  [closeWhenOthersOpen]="true">
                                         <ng-template>
                                                 <h2>{{data.city}}, {{data.state}}</h2>
-                                                <table>
-                                                        <tr *ngFor="let item of data.fundname; let i = index" [attr.data-index]="i" >     
-                                                                   <td>{{item}}</td>
-                                                                   <td>{{data.netAmount[i] | currency: 'CAD$'}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                                <td>Total</td>
-                                                                <td>{{data.total | currency: 'CAD$'}}</td>
-                                                        </tr>
-                                                </table>
+                                                <mat-table #table [dataSource]="data.datasource">
+
+                                                        
+                                                    
+                                                        <!-- Name Column -->
+                                                        <ng-container matColumnDef="fundname">
+                                                          <mat-header-cell *matHeaderCellDef> Fund Name </mat-header-cell>
+                                                          <mat-cell *matCellDef="let element"> {{element.fundname}} </mat-cell>
+                                                        </ng-container>
+                                                    
+                                                    
+                                                        <!-- Symbol Column -->
+                                                        <ng-container matColumnDef="netAmount">
+                                                          <mat-header-cell *matHeaderCellDef> Net Amount </mat-header-cell>
+                                                          <mat-cell *matCellDef="let element"> {{element.netAmount}} </mat-cell>
+                                                        </ng-container>
+                                                    
+                                                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                      </mat-table>
+                                                    
                                         </ng-template>
                                       </agm-snazzy-info-window>
 
