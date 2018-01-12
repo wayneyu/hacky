@@ -15,6 +15,7 @@ import { FundListComponent }   from './fund/fund-list/fund-list.component';
 import {CardComponent} from "./components/card/card.component";
 import {CircleMapComponent} from "./components/circle-map/circle-map.component";
 import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import {MenuComponent} from "./components/menu/menu.component";
 import {SankeyComponent} from "./components/sankey/sankey.component";
 
@@ -47,6 +48,7 @@ import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAAT7o3F1_8wWPVlA_O0nxpHgyTtPKHw6c'
     }),
+    AgmSnazzyInfoWindowModule,
     AngularMaterialModule,
     MatTabsModule,
     MatTableModule,

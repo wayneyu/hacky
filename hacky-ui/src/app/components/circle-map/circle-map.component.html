@@ -18,10 +18,16 @@
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                [label]='data.netAmount | currency: "CAD$"'></agm-marker>
+                                [label]='data.netAmount | currency: "CAD$"'>
 
+                                <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                                        <ng-template>
+                                          My first Snazzy Info Window!
+                                        </ng-template>
+                                      </agm-snazzy-info-window>
 
-                        </agm-map>
+                        </agm-marker>              
+                </agm-map>
         </mat-card-content>
       </mat-card>
 </div>
