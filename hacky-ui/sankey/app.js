@@ -8,7 +8,7 @@ currentNodeSubj.subscribe(value => {
   // document.getElementById("fundnet").innerHTML=(value.children[0].net/1000000).toFixed(4);
   document.getElementById("fund12mo").innerHTML=(Math.random() - 0.5).toFixed(2) * 4;
   document.getElementById("fundCategory").innerHTML=value.children[0].category;
-  document.getElementById("fundMer").innerHTML= Math.random().toFixed(2) + .5;
+  document.getElementById("fundMer").innerHTML= Math.random().toFixed(2);
   
 });
 
