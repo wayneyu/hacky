@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 
-* {
-    font-family:Roboto, Raleway, sans-serif !important; 
-    /*Add the !important to overwrite all elements*/
+
+  md-icon{
+    font-family: 'Material Icons' !important;
   }

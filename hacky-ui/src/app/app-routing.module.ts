@@ -7,7 +7,7 @@ import { CircleMapComponent } from './components/circle-map/circle-map.component
 import { SankeyComponent } from './components/sankey/sankey.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/fund-list', pathMatch:'full'},
+  { path: '', redirectTo: '/dashboard', pathMatch:'full'},
   { path: 'dashboard', component:DashboardComponent },
   { path: 'fund-list', component:FundListComponent },
   { path: 'fund-map', component:CircleMapComponent },
