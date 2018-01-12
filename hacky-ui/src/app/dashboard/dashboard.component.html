@@ -1,19 +1,17 @@
+<div>
 <mat-grid-list cols="3">
     <mat-grid-tile></mat-grid-tile>
- 
-    <!-- Writing markup for login starts -->
-    <mat-grid-tile class='login-element'>
+
+    <div style="height: 80px"></div>
+    <mat-grid-tile class='login-element' style="overflow: visible">
         <div class="login-container">
  
          
-            <!-- Template Header ends -->
+            <div style="height: 20px"></div>
             <div class="login-box-header">
                 <img style="height : 80px" src="https://content.prnewswire.com/images/RB_RB_Eng.png?w=200">
             </div>
-            <!-- Template Body starts -->
             <div class="login-box-body">
- 
-                <!-- Markup for getting Username starts -->
                 <mat-grid-list cols="9" rowHeight="75px">
                     <mat-grid-tile [rowspan]="1" class="login-icon">
                         <mat-icon>lock</mat-icon>
@@ -41,11 +39,9 @@
                 </button></a>
  
             </div>
-            <!-- Template Body ends -->
-            
         </div>
     </mat-grid-tile>
-    <!-- Writing markup for login ends -->
     <mat-grid-tile></mat-grid-tile>
  
 </mat-grid-list>
+</div>
