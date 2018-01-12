@@ -38,3 +38,8 @@ nav a.active {
 .verticalLine {
   border-left: thick solid #ff0000;
 }
+
+.title {
+  text-align: center;
+  padding-left: 380px;
+}
