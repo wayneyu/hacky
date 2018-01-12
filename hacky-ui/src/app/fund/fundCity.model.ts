@@ -1,4 +1,5 @@
 export class FundCity {
+    fundname: string;
     netAmount: number;
     country: string;
     state: string;
