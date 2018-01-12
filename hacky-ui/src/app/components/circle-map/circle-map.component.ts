@@ -4,16 +4,24 @@ import { AgmCoreModule } from '@agm/core';
 import { FundCity } from '../../fund/fundCity.model';
 import { FundCityService } from '../../fund/fund-city-service/fund-city-service';
 import { forEach } from '@angular/router/src/utils/collection';
+import { MatTableDataSource } from '@angular/material';
+
+export class FundRow{
+  fundname: string;
+  netAmount: number;
+
+  constructor(fundname: string,netAmount: number){
+    this.fundname = fundname;
+    this.netAmount = netAmount;
+  }
+}
 
 export class FundCityGroup {
 constructor(){
-  this.fundname=new Array();
-  this.netAmount=new Array();
+  this.datasource = new MatTableDataSource<FundRow>();
 
 }
-
-  fundname: string[];
-  netAmount: number[];
+  datasource: MatTableDataSource<FundRow>
   country: string;
   state: string;
   city: string;
@@ -30,12 +38,14 @@ constructor(){
 ]
 })
 export class CircleMapComponent implements OnInit {
-  fundCityList: FundCityGroup[];
+  displayedColumns = ['fundname', 'netAmount'];
+  fundCityList : FundCityGroup[];
 
-  constructor(private fundCityService: FundCityService) {}
+  constructor(private fundCityService: FundCityService) {
+    this.fundCityList = new Array<FundCityGroup>();
+  }
 
   ngOnInit() {
-    this.fundCityList=new Array();
     
     let byLoc : FundCity[] = this.fundCityService.getFunds();
     
@@ -47,12 +57,10 @@ export class CircleMapComponent implements OnInit {
       fcg.city = byLoc[i].city;
       fcg.state = byLoc[i].state;
       fcg.country = byLoc[i].country;
+      fcg.total = 0;
       
-      fcg.fundname.push(byLoc[i].fundname);
-      fcg.netAmount.push(byLoc[i].netAmount);
-      fcg.total = byLoc[i].netAmount;
 
-      for(let j=1;true; j++){
+      for(let j=0;true; j++){
          if(i+j > byLoc.length-1){
           i += j;
           break;
@@ -62,17 +70,16 @@ export class CircleMapComponent implements OnInit {
         }
 
 
-        fcg.fundname.push(byLoc[i+j].fundname);
-        fcg.netAmount.push(byLoc[i+j].netAmount);
+        fcg.datasource.data.push(new FundRow(byLoc[i+j].fundname, byLoc[i+j].netAmount));
         fcg.total += byLoc[i+j].netAmount;
 
         
       }
       
       this.fundCityList.push(fcg);
+      
     }
-   
-    
+
   }
 
 }

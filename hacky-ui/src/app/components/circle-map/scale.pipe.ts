@@ -13,7 +13,6 @@ import { validateConfig } from '@angular/router/src/config';
 export class ScalePipe implements PipeTransform {
 
   transform(value: number, scaleFactor: string): number {
-    console.log("scale: "  + value + " :: " + value * parseFloat(scaleFactor));
     return value * parseFloat(scaleFactor);
   }
 }
