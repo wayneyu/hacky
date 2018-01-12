@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Globals} from './globals'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Hacky Analytic Dashboard';
+  title = 'Fund Sales Analytics Platform';
+
+  constructor(private globals: Globals){
+
+  }
 }

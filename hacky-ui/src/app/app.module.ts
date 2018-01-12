@@ -26,6 +26,8 @@ import { ScalePipe } from './components/circle-map/scale.pipe';
 import { ChartsModule } from 'ng2-charts';
 import { CircleColorPipe } from './components/circle-map/circleColor.pipe';
 import { PieChartComponent } from 'app/components/pie-chart/pie-chart.component';
+import { Globals } from 'app/globals';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -59,8 +61,9 @@ import { PieChartComponent } from 'app/components/pie-chart/pie-chart.component'
     HttpClientModule,
     MatPaginatorModule,
     ChartsModule,
+    FormsModule
   ],
-  providers: [MessageService, FundService, FundCityService],
+  providers: [MessageService, FundService, FundCityService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
