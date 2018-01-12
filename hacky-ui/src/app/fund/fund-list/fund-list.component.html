@@ -57,11 +57,13 @@
              matRipple
              class="element-row"
              [class.expanded]="expandedElement == row"
-             (click)="expandedElement = row"></mat-row>
-    <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+             [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
+
+    </mat-row>
+    <!--mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
              [@detailExpand]="row.fund == expandedElement ? 'expanded' : 'collapsed'"
              style="overflow: hidden">
-    </mat-row>
+    </mat-row-->
   </mat-table>
 
   <mat-paginator #paginator
@@ -69,4 +71,9 @@
                  [pageSizeOptions]="[5, 10, 20]">
   </mat-paginator>
 </div>
+  <ng-template #tpl let-element>
+    <div class="mat-row" [@detailExpand] style="overflow: hidden">
+      The symbol for {{element.name}} is {{element.symbol}}
+    </div>
+  </ng-template>
 </div>

@@ -7,9 +7,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
-let funds: Fund[];
+//let funds: Fund[];
 
 @Component({
   selector: 'fund-list',
@@ -17,9 +16,9 @@ let funds: Fund[];
   styleUrls: ['./fund-list.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
-      state('expanded', style({ height: '*', visibility: 'visible' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      state('void', style({height: '0px', minHeight: '0', visibility: 'hidden'})),
+      state('*', style({height: '*', visibility: 'visible'})),
+      transition('void <=> *', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
@@ -28,20 +27,19 @@ let funds: Fund[];
 
 export class FundListComponent implements OnInit {
 
- // fundList: Fund[];
+  fundList: Fund[];
   //dataSource: MatTableDataSource<Fund>;
-  dataSource = new ExampleDataSource();
-
+  dataSource = new MatTableDataSource<Fund>();
   displayedColumns = ['name', 'price', 'topSubscriber', 'topPerformance', 'percentDealers', 'category'];
 
-  isExpansionDetailRow = (i, row) => row.hasOwnProperty('detailRow');
+  isExpansionDetailRow = (index, row) => row.hasOwnProperty('detailRow');
   expandedElement: any;
 
   constructor(private fundService: FundService) {}
 
    ngOnInit() {
-     funds = this.fundService.getFunds();
-  //   this.dataSource = new MatTableDataSource(this.fundList);
+     this.fundList = this.fundService.getFunds();
+     this.dataSource = new MatTableDataSource(this.fundList);
    }
 
   @ViewChild(MatSort) sort: MatSort;
@@ -52,6 +50,7 @@ export class FundListComponent implements OnInit {
    * be able to query its view for the initialized sort.
    */
   ngAfterViewInit() {
+    this.dataSource.data = this.fundList;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
@@ -63,15 +62,16 @@ export class FundListComponent implements OnInit {
  * altered, the observable should emit that new set of data on the stream. In our case here,
  * we return a stream that contains only one set of data that doesn't change.
  */
-export class ExampleDataSource extends DataSource<any> {
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
 
-  connect(): Observable<Element[]> {
-    const rows = [];
-    funds.forEach(fund => rows.push(fund, { detailRow: true, fund }));
-   // console.log(rows);
-    return Observable.of(rows);
-  }
+// export class ExampleDataSource extends DataSource<any> {
+//   /** Connect function called by the table to retrieve one stream containing the data to render. */
+//
+//   connect(): Observable<Element[]> {
+//     const rows = [];
+//     funds.forEach(fund => rows.push(fund, { detailRow: true, fund }));
+//    // console.log(rows);
+//     return Observable.of(rows);
+//   }
 
-  disconnect() { }
-}
+
+//}

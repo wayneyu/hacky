@@ -19,6 +19,7 @@ import {MenuComponent} from "./components/menu/menu.component";
 import {FundService} from "./fund/fund-service/fund-service";
 import { MessageService } from './common/message.service'
 import { FundCityService } from './fund/fund-city-service/fund-city-service';
+import { CdkDetailRowDirective } from './common/cdk-detail-row.directive'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FundCityService } from './fund/fund-city-service/fund-city-service';
     FundListComponent,
     AppComponent,
     CardComponent,
-    MenuComponent
+    MenuComponent,
+    CdkDetailRowDirective
   ],
   imports: [
     BrowserModule,
