@@ -5,10 +5,38 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
+      <div style="width: 100%; overflow: hidden;">
+          <div style="width: 900px; float: left; padding-left: 25px" id="chart"></div>
+          <div style="margin-left: 620px;"> <h3 id="fundName" >Fund</h3>
+            <table>
+                <tr>
+                    <td>Assets ($M):</td>
+                    <td id="fundnet">137.02</td> 
+                  </tr>
+              <tr>
+                <td>Net Flow ($M):</td>
+                <td id="fundnetFlow">137.02</td> 
+              </tr>
+              <tr>
+                <td>MER:</td>
+                <td>2.09</td> 
+              </tr>
+              <tr>
+                <td>Type:</td>
+                <td>Sector Equity</td> 
+              </tr>
+              <tr>
+                <td>1 mo:</td>
+                <td id="fund12mo">0.02</td> 
+              </tr>
+            </table> </div>
+      </div>
     <div id="chart"></div>
+
     
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdn.rawgit.com/Neilos/bihisankey/master/bihisankey.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.5.6/Rx.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

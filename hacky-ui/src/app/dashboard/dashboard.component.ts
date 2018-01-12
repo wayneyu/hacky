@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
@@ -7,5 +8,14 @@ import { Component } from "@angular/core";
 })
 
 export class DashboardComponent {
-  constructor() { }
+
+  router = Router;
+
+  hide = true;
+
+  constructor() { };
+
+  login() {
+    this.hide = false;
+  };
 }
