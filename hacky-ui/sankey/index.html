@@ -3,12 +3,45 @@
   <head>
     <title>bihisankey diagram</title>
     <link href="style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
+      <div style="width: 100%; overflow: hidden;">
+          <div style="width: 800px; float: left; padding-left: 25px" id="chart"></div>
+          <div style="margin-left: 620px;"> <h3 id="fundName" >Canadian Dividend & Income Equity</h3>
+            <table>
+                <tr>
+                    <td>Net Assets - 6mo ($M):</td>
+                    <td id="fundnet">12.52</td> 
+                  </tr>
+              <tr>
+                <td>Net Flow ($M):</td>
+                <td id="fundnetFlow">137.06</td> 
+              </tr>
+              <tr>
+                <td>MER:</td>
+                <td id="fundMer">2.09</td> 
+              </tr>
+              <tr>
+                <td>Category:</td>
+                <td id="fundCategory">Fund</td> 
+              </tr>
+              <tr>
+                <td>1 mo:</td>
+                <td id="fund12mo">0.02</td> 
+              </tr>
+            </table> </div>
+
+            <div style="height:150px"></div>
+            <div class="box blue"></div> - Positive Net Flow <br /><br />
+             <div class="box red"></div> - Negative Net Flow
+      </div>
     <div id="chart"></div>
+
     
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdn.rawgit.com/Neilos/bihisankey/master/bihisankey.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.5.6/Rx.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

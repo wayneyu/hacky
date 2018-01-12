@@ -1,5 +1,17 @@
 'use strict';
 
+var currentNodeSubj = new Rx.Subject();
+currentNodeSubj.subscribe(value => {
+  console.log(value);
+  document.getElementById("fundName").innerHTML=value.name;
+  document.getElementById("fundnetFlow").innerHTML=(value.netFlow/1000000).toFixed(4);
+  document.getElementById("fundnet").innerHTML=(value.children[0].net/1000000).toFixed(4);
+  document.getElementById("fund12mo").innerHTML=(Math.random() - 0.5).toFixed(2) * 4;
+  document.getElementById("fundCategory").innerHTML=value.children[0].category;
+  document.getElementById("fundMer").innerHTML= Math.random().toFixed(2) + .5;
+  
+});
+
 var svg, tooltip, biHiSankey, path, defs, colorScale, highlightColorScale, isTransitioning;
 
 var OPACITY = {
@@ -10,10 +22,9 @@ var OPACITY = {
     LINK_FADED: 0.05,
     LINK_HIGHLIGHT: 0.9
   },
-  TYPES = ["RBC Asia Pacific Fund", "Balanced Fund", "RBC Asian Equity Fund", "RBC Balanced Growth & Income", "PH&N Balanced" 
-  , "RBC Canadian Equity Class" ,"RBC Canadian Gov Bond Index" , "RBC Cdn Small & Mid-Cap Res. Fund A" , "RBC Conserv. Growth & Inc Fd D" , "RBC DS BALANCED GLOBAL PORTFOLIO"],
-  TYPE_COLORS = ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"],
-  TYPE_HIGHLIGHT_COLORS = ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494"],
+  TYPES = ["Fund", "NegFund"],
+  TYPE_COLORS = ["#0000cd","ff0000"],
+  TYPE_HIGHLIGHT_COLORS = ["#66c2a5","#66c2a5"],
   LINK_COLOR = "#b3b3b3",
   INFLOW_COLOR = "#2E86D1",
   OUTFLOW_COLOR = "#D63028",
@@ -30,19 +41,19 @@ var OPACITY = {
     LEFT: OUTER_MARGIN
   },
   TRANSITION_DURATION = 400,
-  HEIGHT = 500 - MARGIN.TOP - MARGIN.BOTTOM,
-  WIDTH = 960 - MARGIN.LEFT - MARGIN.RIGHT,
+  HEIGHT = 550 - MARGIN.TOP - MARGIN.BOTTOM,
+  WIDTH = 750 - MARGIN.LEFT - MARGIN.RIGHT,
   LAYOUT_INTERATIONS = 32,
   REFRESH_INTERVAL = 7000;
 
 var formatNumber = function (d) {
   var numberFormat = d3.format(",.0f"); // zero decimal places
-  return "£" + numberFormat(d);
+  return "$" + numberFormat(d);
 },
 
 formatFlow = function (d) {
   var flowFormat = d3.format(",.0f"); // zero decimal places with sign
-  return "£" + flowFormat(Math.abs(d)) + (d < 0 ? " CR" : " DR");
+  return "$" + flowFormat(Math.abs(d));
 },
 
 // Used when temporarily disabling user interractions to allow animations to complete
@@ -260,9 +271,9 @@ function update () {
     if (!isTransitioning) {
       showTooltip().select(".value").text(function () {
         if (d.direction > 0) {
-          return d.source.name + " → " + d.target.name + "\n" + formatNumber(d.value);
+          return d.source.name + " -> " + d.target.name + "\n" + formatNumber(d.value);
         }
-        return d.target.name + " ← " + d.source.name + "\n" + formatNumber(d.value);
+        return d.target.name + " <- " + d.source.name + "\n" + formatNumber(d.value);
       });
 
       d3.select(this)
@@ -368,6 +379,7 @@ function update () {
 
   node.on("mouseenter", function (g) {
     if (!isTransitioning) {
+      currentNodeSubj.next(g);
       restoreLinksAndNodes();
       highlightConnected(g);
       fadeUnconnected(g);
@@ -389,8 +401,8 @@ function update () {
           .duration(TRANSITION_DURATION)
           .style("opacity", 1).select(".value")
           .text(function () {
-            var additionalInstructions = g.children.length ? "\n(Double click to expand)" : "";
-            return g.name + "\nNet flow: " + formatFlow(g.netFlow) + additionalInstructions;
+            var additionalInstructions = g.children.length ? "" : "";
+            return  "\n" +g.name + "\nNet flow: " + formatFlow(g.netFlow) + additionalInstructions;
           });
     }
   });
@@ -401,7 +413,6 @@ function update () {
       restoreLinksAndNodes();
     }
   });
-
   node.filter(function (d) { return d.children.length; })
     .on("dblclick", showHideChildren);
 
@@ -504,59 +515,49 @@ function update () {
 
 
 var exampleNodes = [
-  {"type":"RBC Asia Pacific Fund","id":"fund1","parent":null,"name":"RBC Asia Pacific Fund"},
-  {"type":"RBC Asia Pacific Fund","id":1,"parent":"fund1","number":"100","name":"RBC Asia Pacific Fund"},
-
-  {"type":"Balanced Fund","id":"fund2","parent":null,"name":"Balanced Fund"},
-  {"type":"Balanced Fund","id":2,"parent":"fund2","number":"100","name":"Balanced Fund"},
-
-  {"type":"RBC Balanced Growth & Income","id":"fund3","parent":null,"name":"RBC Asian Equity Fund"},
-  {"type":"Balanced Fund","id":3,"parent":"fund3","number":"100","name":"RBC Asian Equity Fund"},
-
-  {"type":"PH&N Balanced-B","id":"fund4","parent":null,"number":"r","name":"RBC Balanced Growth & Income"},
-  {"type":"Balanced Fund","id":4,"parent":"fund4","number":"100","name":"RBC Balanced Growth & Income"},
-
-  {"type":"PH&N Balanced-B","id":"fund5","parent":null,"number":"ex","name":"PH&N Balanced-B"},
-  {"type":"Balanced Fund","id":5,"parent":"fund5","number":"100","name":"PH&N Balanced-B"},
-
-  {"type":"RBC Canadian Equity Class","id":"fund6","parent":null,"number":"ex","name":"RBC Canadian Equity Class"},
-  {"type":"Balanced Fund","id":6,"parent":"fund6","number":"100","name":"RBC Canadian Equity Class"},
-
-  {"type":"RBC Canadian Gov Bond Index","id":"fund7","parent":null,"number":"ex","name":"RBC Canadian Gov Bond Index"},
-  {"type":"RBC Canadian Gov Bond Index","id":7,"parent":"fund7","number":"100","name":"RBC Canadian Gov Bond Index"},
-
-  {"type":"RBC Cdn Small & Mid-Cap Res. Fund A","id":"fund8","parent":null,"number":"ex","name":"RBC Cdn Small & Mid-Cap Res. Fund A"},
-  {"type":"Balanced Fund","id":8,"parent":"fund8","number":"100","name":"RBC Cdn Small & Mid-Cap Res. Fund A"},
-
-  {"type":"RBC Conserv. Growth & Inc Fd D","id":"fund9","parent":null,"number":"ex","name":"RBC Conserv. Growth & Inc Fd D"},
-  {"type":"Balanced Fund","id":9,"parent":"fund9","number":"100","name":"RBC Conserv. Growth & Inc Fd D"},
-
-  {"type":"PH&N Balanced-B","id":"fund10","parent":null,"number":"ex","name":"RBC DS BALANCED GLOBAL PORTFOLIO"},
-  {"type":"RBC DS BALANCED GLOBAL PORTFOLIO","id":10,"parent":"fund10","number":"100","name":"RBC DS BALANCED GLOBAL PORTFOLIO"},
-
+  {"type":"NegFund","id":"fund7","parent":null,"name":"SELECT CONSERVATIVE"},
+{"type":"NegFund","id":7,"parent":"fund7","net":-923829.46,"name":"SELECT CONSERVATIVE", "category":"Global Neutral Balanced"},
+{"type":"Fund","id":"fund10","parent":null,"name":"RBC CANADIAN DIVIDEND FUND SERIES O"},
+{"type":"Fund","id":10,"parent":"fund10","net":7725717.99,"name":"RBC CANADIAN DIVIDEND FUND SERIES O", "category":"Canadian Dividend & Income Equity"},
+{"type":"NegFund","id":"fund1","parent":null,"name":"RBC CANADIAN DIVIDEND FUND"},
+{"type":"NegFund","id":1,"parent":"fund1","net":-154517116.81,"name":"RBC CANADIAN DIVIDEND FUND", "category":"Canadian Dividend & Income Equity"},
+{"type":"Fund","id":"fund5","parent":null,"name":"RBC INVESTMENT SAVINGS ACCT A (RBC)"},
+{"type":"Fund","id":5,"parent":"fund5","net":-188331.91,"name":"RBC INVESTMENT SAVINGS ACCT A (RBC)", "category":"Miscellaneous - Other"},
+{"type":"Fund","id":"fund0","parent":null,"name":"BALANCED FUND"},
+{"type":"Fund","id":0,"parent":"fund0","net":940698.47,"name":"BALANCED FUND", "category":"Canadian Neutral Balanced"},
+{"type":"NegFund","id":"fund3","parent":null,"name":"RBC CANADIAN DIVIDEND FUND-ISC"},
+{"type":"NegFund","id":3,"parent":"fund3","net":-2390593.89,"name":"RBC CANADIAN DIVIDEND FUND-ISC", "category":"Canadian Dividend & Income Equity"},
+{"type":"Fund","id":"fund6","parent":null,"name":"SELECT BALANCED PORTFOLIO"},
+{"type":"Fund","id":6,"parent":"fund6","net":347323.17,"name":"SELECT BALANCED PORTFOLIO", "category":"Global Neutral Balanced"},
+{"type":"Fund","id":"fund9","parent":null,"name":"RBC CANADIAN DIVIDEND FD F-T5"},
+{"type":"Fund","id":9,"parent":"fund9","net":840097.86,"name":"RBC CANADIAN DIVIDEND FD F-T5", "category":"Canadian Dividend & Income Equity"},
+{"type":"Fund","id":"fund2","parent":null,"name":"RBC CANADIAN DIVIDEND FUND SERIES D"},
+{"type":"Fund","id":2,"parent":"fund2","net":18133253.7,"name":"RBC CANADIAN DIVIDEND FUND SERIES D", "category":"Canadian Dividend & Income Equity"},
+{"type":"NegFund","id":"fund4","parent":null,"name":"RBC CANADIAN DIVIDEND FUND-LL"},
+{"type":"NegFund","id":4,"parent":"fund4","net":-1469763.63,"name":"RBC CANADIAN DIVIDEND FUND-LL", "category":"Canadian Dividend & Income Equity"},
+{"type":"Fund","id":"fund8","parent":null,"name":"RBC BALANCED FUND SERIES D"},
+{"type":"Fund","id":8,"parent":"fund8","net":2837590.32,"name":"RBC BALANCED FUND SERIES D", "category":"Canadian Neutral Balanced"}
 ]
+
+exampleNodes.forEach( x =>  {if (x.net < 0) {x.type = "NegFund";}}); 
 
 var exampleLinks = [
-
-  {"source":1, "target":2, "value":15},
-  {"source":2, "target":1, "value":17},
-  {"source":3, "target":5, "value":34},
-  {"source":4, "target":5, "value":33},
-  {"source":5, "target":4, "value":22},
-  {"source":1, "target":4, "value":57},
-  {"source":2, "target":3, "value":12},
-  {"source":3, "target":2, "value":98},
-  {"source":6, "target":5, "value":134},
-  {"source":7, "target":6, "value":65},
-  {"source":8, "target":4, "value":56},
-  {"source":9, "target":6, "value":188},
-  {"source":10, "target":9, "value":87},
-  {"source":10, "target":4, "value":79},
-  {"source":7, "target":3, "value":145},
-  {"source":8, "target":2, "value":12},
+  {"source":1, "target":1, "value":49636565.13},
+{"source":1, "target":2, "value":21396640.46},
+{"source":1, "target":10, "value":7725717.99},
+{"source":0, "target":0, "value":3778288.79},
+{"source":2, "target":1, "value":3263386.76},
+{"source":0, "target":8, "value":2837590.32},
+{"source":3, "target":1, "value":2390593.89},
+{"source":7, "target":1, "value":1692762.77},
+{"source":4, "target":1, "value":1469763.63},
+{"source":1, "target":6, "value":1093410.5},
+{"source":5, "target":1, "value":918080.62},
+{"source":1, "target":9, "value":840097.86},
+{"source":1, "target":7, "value":768933.31},
+{"source":6, "target":1, "value":746087.33},
+{"source":1, "target":5, "value":729748.71}
 ]
-
-console.log (exampleLinks);
 
 biHiSankey
   .nodes(exampleNodes)
