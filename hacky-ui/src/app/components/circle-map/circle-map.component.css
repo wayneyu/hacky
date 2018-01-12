@@ -2,9 +2,12 @@ agm-map {
     height: 600px;
   }
 
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }  
   
 
+  .mat-table {
+    display: table;
+    overflow: auto;
+    max-height: 500px;
+    
+  }
+ 
