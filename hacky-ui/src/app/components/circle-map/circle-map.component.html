@@ -18,7 +18,7 @@
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
-                                iconUrl="assets/piggybankIcon.png"
+                                iconUrl='{{data.total | swapIcon: "assets/piggybankIcon.png":"assets/piggybankIcon2.png"}}'
                                 [title]='(data.city) + " [" + (data.total | currency: "CAD$") + "]"'>
 
                                 <agm-snazzy-info-window [maxWidth]="800" [maxHeight]="900"  [closeWhenOthersOpen]="true">
