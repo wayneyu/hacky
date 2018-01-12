@@ -18,6 +18,7 @@
                         <agm-marker *ngFor="let data of fundCityList"
                                 [latitude]="data.lat"
                                 [longitude]="data.lon"
+                                iconUrl="http://i68.tinypic.com/154hgtk_th.png"
                                 [title]='(data.city) + " [" + (data.total | currency: "CAD$") + "]"'>
 
                                 <agm-snazzy-info-window [maxWidth]="800" [maxHeight]="900"  [closeWhenOthersOpen]="true">
@@ -25,7 +26,7 @@
                                                 <h2>{{data.city}}, {{data.state}}</h2>
                                                 <h3>Total : {{data.total | currency: "$"}}</h3>
 
-                                                <mat-table #table [dataSource]="data.datasource">
+                                                <mat-table #table [dataSource]="data.datasource" matSort>
 
                                                         
                                                     
