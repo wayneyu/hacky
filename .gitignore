@@ -61,6 +61,6 @@ typings/
 .next
 
 # Intellij
-.idea
+.idea/
 *.iml
-target
+target/

@@ -37,7 +37,11 @@
                                                         <!-- Symbol Column -->
                                                         <ng-container matColumnDef="netAmount">
                                                           <mat-header-cell *matHeaderCellDef> Net Amount </mat-header-cell>
-                                                          <mat-cell  *matCellDef="let element"> {{element.netAmount | currency: "$"}} </mat-cell>
+                                                          <mat-cell  *matCellDef="let element">
+                                                                <span class="{{ element.netAmount | swapIcon: 'positive':'negative' }}">
+                                                                   {{element.netAmount | currency: "$" }} 
+                                                                </span>
+                                                          </mat-cell>
                                                         </ng-container>
                                                     
                                                         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

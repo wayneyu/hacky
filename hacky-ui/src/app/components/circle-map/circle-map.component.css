@@ -10,4 +10,12 @@ agm-map {
     max-height: 500px;
     
   }
+
+  .negative {
+    color: rgb(124, 14, 14);
+  }
+
+  .positive {
+    color: rgb(11, 122, 11);
+  }
  
